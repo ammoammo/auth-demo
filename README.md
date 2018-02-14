@@ -5,8 +5,7 @@ It can be reused for username and password authentication.
 
 ## App Dependencies:
 
-// giving user failure/success feedback in Register/Login
-* "connect-flash": "^0.1.1"
+* "connect-flash": "^0.1.1"-----------// giving user failure/success feedback in Register/Login
  // views templeting
 * "ejs": "^2.5.7"
 // web framework

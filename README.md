@@ -20,6 +20,6 @@ It can be reused for username and password authentication.
 // strategy for passport
 * "passport-local": "^1.0.0"
 // Mongoose plugin, simplifies username and password Passport login
-* "passport-local-mongoose": "^4.5.0" 
+* "passport-local-mongoose": "^4.5.0"
 
 **Additionally, I used [Materialize.css](http://materializecss.com) for fast and modern material design.**

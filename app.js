@@ -2,7 +2,11 @@ var express  = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
+    flash    = require('connect-flash');
     User     = require('./models/user');
+
+// require routes handler
+var indexRouter = require('./routes/index');
 
 // -----------------------
 // Init App
@@ -30,6 +34,7 @@ app.use(require('express-session')({
 // -----------------------
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Configure passport-local to use user model for authentication
 passport.use(new LocalStrategy(User.authenticate()));
@@ -43,41 +48,8 @@ passport.deserializeUser(User.deserializeUser());
 // -----------------------
 mongoose.connect('mongodb://localhost/authDemoDB');
 
-// -----------------------
-// Routes
-// -----------------------
-app.get('/', function(req, res){
-  res.redirect('/register');
-});
-
-app.get('/secret', function(req, res){
-  res.render('secret', {username: req.user.username});
-});
-
-// Auth Routes
-// -----------------------
-// Show Register Form
-app.get('/register', function(req, res){
-  res.render('register');
-});
-
-// Handle Register Form Data
-app.post('/register', function(req, res){
-  // register user to DB
-  User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-    if(err){
-      console.log('+++++ERROR in register: ', err);
-      res.redirect('/register');
-    }
-    else {
-      // authenticate user
-      passport.authenticate('local')(req, res, function(){
-        res.redirect('/secret');
-      });
-    }
-  });
-});
-
+// Register Routes
+app.use(indexRouter);
 
 app.listen(port, function(){
   console.log('Server started on port ' + port);

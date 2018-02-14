@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> <%= title %> | Auth Demo</title>
+    <!-- Materialize.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <style>
+      nav { background-color: #26a69a;}
+      btn, a { margin-bottom: .5rem}
+      form > button[type="submit"],
+      a {
+        margin: 0 auto;
+      }
+      .btn-flat:hover {
+        background: inherit;
+      }
+      .card-panel {
+        padding: 1rem;
+      }
+      @media only screen and (max-width: 992px){
+        form > button[type="submit"],
+        a {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+     <div class="nav-wrapper">
+       <a href="/register" class="brand-logo center">Auth Demo</a>
+     </div>
+    </nav>
+    <br>
+    <div class="container">
